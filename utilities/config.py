@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-DUMMY_PAY_URL = 'https://dummypay.vercel.app/'
+DUMMY_PAY_URL = 'https://dummypay.vercel.app'
 
 load_dotenv()
 
