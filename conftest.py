@@ -4,7 +4,9 @@ from typing import Any
 import pytest
 from playwright.sync_api import Browser, Page
 
+from pages.DashboardPage import DashboardPage
 from pages.LoginPage import LoginPage
+from pages.PaymentCardsPage import PaymentCardsPage
 
 
 # @pytest.fixture(scope='module')
@@ -24,10 +26,14 @@ def login_page(page: Page) -> LoginPage:
     return login
 
 @pytest.fixture(scope='function')
-def dummy_pay_pages(page: Page) -> LoginPage:
+def dummy_pay_pages(page: Page):
     login = LoginPage(page)
     login.open()
     login.fillCredentialsAndLogIn()
-    print("Opening chromium....")
-    
     return login
+
+@pytest.fixture(scope='function')
+def payment_cards(dummy_pay_pages):
+    payment_cards_page = PaymentCardsPage(dummy_pay_pages.page)
+    payment_cards_page.navigateToPage()
+    return payment_cards_page

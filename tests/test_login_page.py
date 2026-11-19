@@ -9,13 +9,13 @@ from utilities.config import DUMMY_PAY_URL
 def test_login_flow(login_page: LoginPage) -> None:
     checkPageComponentsAreVisible(login_page)
     login_page.fillCredentialsAndLogIn()
-    expect(login_page.page).to_have_url(DUMMY_PAY_URL)
+    expect(login_page.page).to_have_url(f"{DUMMY_PAY_URL}/")
     login_page.accountButton.scroll_into_view_if_needed()
     login_page.accountButton.click()
     expect(login_page.signOutButton).to_be_visible()
     login_page.signOutButton.click()
     print(f"Back to: {login_page.page.url}")
-    expect(login_page.page).to_have_url(f"{DUMMY_PAY_URL}login", timeout=10000)
+    expect(login_page.page).to_have_url(f"{DUMMY_PAY_URL}/login")
     checkPageComponentsAreVisible(login_page)
 
 

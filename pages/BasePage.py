@@ -33,10 +33,14 @@ class BasePage:
     @property
     def signOutButton(self) -> Locator:
         return self.page.get_by_role("menuitem", name="Sign out")
-    
-    
 
     def fillCredentialsAndLogIn(self) -> None:
         self.loginEmailInput.fill(SITE_CREDENTIALS["username"])
         self.loginPasswordInput.fill(SITE_CREDENTIALS["password"])
         self.loginSignInButton.click()
+        self.page.wait_for_url(self.PATH)
+
+    def clickOnAccountAndLogOut(self):
+        self.accountButton.scroll_into_view_if_needed()
+        self.accountButton.click()
+        self.signOutButton.click()
