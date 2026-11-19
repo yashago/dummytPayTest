@@ -44,3 +44,6 @@ class BasePage:
         self.accountButton.scroll_into_view_if_needed()
         self.accountButton.click()
         self.signOutButton.click()
+
+    def navigateToPage(self) -> None:
+        self.page.goto(self.PATH)

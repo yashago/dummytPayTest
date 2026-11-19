@@ -26,14 +26,20 @@ def login_page(page: Page) -> LoginPage:
     return login
 
 @pytest.fixture(scope='function')
-def dummy_pay_pages(page: Page):
-    login = LoginPage(page)
-    login.open()
-    login.fillCredentialsAndLogIn()
-    return login
+def login(page: Page):
+    login_page = LoginPage(page)
+    login_page.open()
+    login_page.fillCredentialsAndLogIn()
+    return login_page
 
 @pytest.fixture(scope='function')
-def payment_cards(dummy_pay_pages):
-    payment_cards_page = PaymentCardsPage(dummy_pay_pages.page)
+def payment_cards(login):
+    payment_cards_page = PaymentCardsPage(login.page)
     payment_cards_page.navigateToPage()
     return payment_cards_page
+
+@pytest.fixture(scope='function')
+def dashboard(login):
+    dashboard_page = DashboardPage(login.page)
+    dashboard_page.navigateToPage()
+    return dashboard_page

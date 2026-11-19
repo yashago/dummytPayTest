@@ -66,9 +66,6 @@ class PaymentCardsPage(BasePage):
     @property
     def remove_card_buttons(self) -> Locator:
         return self.page.get_by_role("button", name="Remove card ending in")
-    
-    def navigateToPage(self) -> None:
-        self.page.goto(self.PATH)
 
     def open_add_card_dialog(self) -> None:
         self.add_card_button.click()
