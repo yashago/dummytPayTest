@@ -35,8 +35,8 @@ class BasePage:
         return self.page.get_by_role("menuitem", name="Sign out")
 
     def fillCredentialsAndLogIn(self) -> None:
-        self.loginEmailInput.fill(SITE_CREDENTIALS["username"])
-        self.loginPasswordInput.fill(SITE_CREDENTIALS["password"])
+        self.loginEmailInput.fill(SITE_CREDENTIALS.get("username"))
+        self.loginPasswordInput.fill(SITE_CREDENTIALS.get("password"))
         self.loginSignInButton.click()
         self.page.wait_for_url(self.PATH)
 
