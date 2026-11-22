@@ -36,6 +36,7 @@ jobs:
           DUMMY_PAY_USERNAME: ${{ secrets.DUMMY_PAY_USERNAME }}
           DUMMY_PAY_PASSWORD: ${{ secrets.DUMMY_PAY_PASSWORD }}
           DUMMY_PAY_BAD_PASSWORD: ${{ secrets.DUMMY_PAY_BAD_PASSWORD }}
+          BACKEND_EMAIL: ${{ vars.BACKEND_EMAIL }}
         # pytest.ini uses --headed, so give the browser a virtual display
         run: xvfb-run --auto-servernum python -m pytest tests --tracing retain-on-failure --output test-results
 
