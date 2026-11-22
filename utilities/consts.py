@@ -1,5 +1,6 @@
 from enum import StrEnum
 
+
 CONSTS: dict[str, str] = {
     "alertMessage": "Incorrect email or password."
 }
