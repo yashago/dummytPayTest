@@ -20,11 +20,11 @@ def sign_in(email, password):
         json={"email": email, "password": password},
     )
     r.raise_for_status()
-    return r.json()  # access_token, refresh_token, expires_in
+    return r.json().get("access_token")  # access_token, refresh_token, expires_in
 
 def rpc(fn, params=None):    
-    session = sign_in(EMAIL, PASSWORD)
-    token = session.get("access_token")
+    token = sign_in(EMAIL, PASSWORD)
+    # token = session.get("access_token")
     r = requests.post(
         f"{URL}/rest/v1/rpc/{fn}",
         headers={"apikey": ANON_KEY, "Authorization": f"Bearer {token}"},

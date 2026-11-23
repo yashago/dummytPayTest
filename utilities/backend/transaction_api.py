@@ -14,7 +14,7 @@ def send_funds(user_mail, amount = 10, currency = CURENCY.USD):
         "p_amount_minor": amount,              # 10.00
         "p_input_side": "send",              # send | receive
     })
-    response = rpc("execute_transfer", {
+    response = rpc(FUNCTIONS.EXECUTE_TRANSFER, {
         "p_quote_id": quote.get("quote_id"),
         "p_idempotency_key": str(uuid.uuid4()),
     })

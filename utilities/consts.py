@@ -18,3 +18,4 @@ class FUNCTIONS(StrEnum):
     LOOKUP_RECEPIENT = "lookup_recipient"
     CREATE_TRANSFER_QUOTE = "create_transfer_quote"
     WALLET_SUMMARY = "get_wallet_summary"
+    EXECUTE_TRANSFER= "execute_transfer"
